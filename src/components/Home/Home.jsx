@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import style from './Home.module.css'
 import Nav from '../Nav/Nav';
 import Card from '../Card/Card';
 import Filters from '../Filters/Filters';
+import { getAllVideogames } from '../../redux/actions';
+import { useDispatch } from 'react-redux';
 
 const Home = ({ videogames, onSearch }) => {
   if (!Array.isArray(videogames)) {
     return <div>Loading...</div>;  // Muestra algo mientras se cargan los datos
   }
+  const dispatch = useDispatch()
   const firstVideogames = Math.ceil(videogames.length / 3)
   const secondVideogames = firstVideogames * 2;
 
