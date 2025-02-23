@@ -26,20 +26,20 @@ const Home = ({ videogames, onSearch }) => {
         ) : (
           <>
             <div className={style.divCardsTop}> {/*Luego aqui como en los de abajo, renderizo los juegos en cada una de las 3 posiciones (top, middle y bottom) */}
-              {videogamesTop
+              {Array.isArray(videogamesTop) && videogamesTop
                 .map((coun) => (
                   <Card coun={coun} key={coun.id} />
                 ))
               }
             </div>
             <div className={style.divCardsMiddle}>
-              {videogamesMiddle
+              {Array.isArray(videogamesMiddle) && videogamesMiddle
                 .map((coun) => (
                   <Card coun={coun} key={coun.id} />
                 ))}
             </div>
             <div className={style.divCardsBottom}>
-              {videogamesBottom
+              {Array.isArray(videogamesBottom) && videogamesBottom
                 .map((coun) => (
                   <Card coun={coun} key={coun.id} />
                 ))
