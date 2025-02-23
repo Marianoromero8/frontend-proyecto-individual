@@ -3,19 +3,9 @@ import style from './Home.module.css'
 import Nav from '../Nav/Nav';
 import Card from '../Card/Card';
 import Filters from '../Filters/Filters';
-import { getAllVideogames } from '../../redux/actions';
-import { useDispatch } from 'react-redux';
 
 const Home = ({ videogames, onSearch }) => {
-  const dispatch = useDispatch()
 
-  useEffect(() => {
-    dispatch(getAllVideogames());  // Acción que obtiene los videojuegos
-  }, [dispatch]);
-
-  if (!Array.isArray(videogames)) {
-    return <div>Loading...</div>;  // Muestra algo mientras se cargan los datos
-  }
   const firstVideogames = Math.ceil(videogames.length / 3)
   const secondVideogames = firstVideogames * 2;
 
@@ -23,6 +13,10 @@ const Home = ({ videogames, onSearch }) => {
   const videogamesTop = videogames.slice(0, firstVideogames);
   const videogamesMiddle = videogames.slice(firstVideogames, secondVideogames);
   const videogamesBottom = videogames.slice(secondVideogames);
+
+  if (!Array.isArray(videogames)) {
+    return <div>Loading...</div>;  // Muestra algo mientras se cargan los datos
+  }
 
   return (
     <div className={style.container}>
