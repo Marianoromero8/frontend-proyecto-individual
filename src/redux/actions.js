@@ -17,6 +17,7 @@ export const getAllVideogames = () => {
     return async function(dispatch){
         try{
             const {data} = await axios.get(`${API_URL}/api/videogames/`)
+            console.log('Videogames Data:', data);
             return dispatch ({
                 type: ALL_VIDEOGAMES,
                 payload: data
