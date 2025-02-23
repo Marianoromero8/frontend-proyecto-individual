@@ -7,10 +7,15 @@ import { getAllVideogames } from '../../redux/actions';
 import { useDispatch } from 'react-redux';
 
 const Home = ({ videogames, onSearch }) => {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getAllVideogames());  // Acción que obtiene los videojuegos
+  }, [dispatch]);
+
   if (!Array.isArray(videogames)) {
     return <div>Loading...</div>;  // Muestra algo mientras se cargan los datos
   }
-  const dispatch = useDispatch()
   const firstVideogames = Math.ceil(videogames.length / 3)
   const secondVideogames = firstVideogames * 2;
 
@@ -18,10 +23,6 @@ const Home = ({ videogames, onSearch }) => {
   const videogamesTop = videogames.slice(0, firstVideogames);
   const videogamesMiddle = videogames.slice(firstVideogames, secondVideogames);
   const videogamesBottom = videogames.slice(secondVideogames);
-
-  useEffect(() => {
-    dispatch(getAllVideogames());  // Acción que obtiene los videojuegos
-  }, [dispatch]);
 
   return (
     <div className={style.container}>
