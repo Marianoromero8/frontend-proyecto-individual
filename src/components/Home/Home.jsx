@@ -16,6 +16,10 @@ const Home = ({ videogames, onSearch }) => {
   const videogamesMiddle = videogames.slice(firstVideogames, secondVideogames);
   const videogamesBottom = videogames.slice(secondVideogames);
 
+  useEffect(() => {
+    dispatch(getAllVideogames());  // Acción que obtiene los videojuegos
+  }, [dispatch]);
+
   return (
     <div className={style.container}>
       <Nav onSearch={onSearch} />
