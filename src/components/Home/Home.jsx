@@ -19,7 +19,7 @@ const Home = ({ videogames, onSearch }) => {
       <Nav onSearch={onSearch} />
       <Filters />
       <div className={style.divCards}> {/*En este div para solucionar un problema de estetica cuando carga, si esta vacia la pantalla o no encuentra algo quedara .....*/}
-        {videogames.length === 0 ? (
+        {Array.isArray(videogames) && videogames.length === 0 ? (
           <div className={style.noResults}>
             <p>...........</p>
           </div>
